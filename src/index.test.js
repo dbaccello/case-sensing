@@ -3,6 +3,7 @@ import { isLowerCase, isUpperCase, isSentenceCase, isCapitalCase } from "./index
 describe("isLowerCase(text, rate)", () => {
   const success = "i like climbing mountains";
   const fail = "i like climbing MOUNTAINS";
+  const rating = "TeleVision"
   it(`given a non-string or an empty string should throw an error'`, () => {
     expect(() => {
       isLowerCase(13);
@@ -25,11 +26,15 @@ describe("isLowerCase(text, rate)", () => {
   it(`given a string with one or more uppercase letters should return 'false'`, () => {
     expect(isLowerCase(fail)).toBeFalsy();
   });
+  it(`given a string with 8 letter in lowercase and 2 in uppercase with 'rate' <= 80 should return 'true'`, () => {
+    expect(isLowerCase(rating, 80)).toBeTruthy();
+  });
 });
 
 describe("isUpperCase(text, rate)", () => {
   const success = "I LIKE CLIMBING MOUNTAINS";
   const fail = "I LIKE CLIMBING mountains";
+  const rating = "tELEvISION"
   it(`given a non-string or an empty string should throw an error'`, () => {
     expect(() => {
       isUpperCase(13);
@@ -51,6 +56,9 @@ describe("isUpperCase(text, rate)", () => {
   });
   it(`given a string with one or more lowercase letters should return 'false'`, () => {
     expect(isUpperCase(fail)).toBeFalsy();
+  });
+  it(`given a string with 8 letter in uppercase and 2 in lowercase with 'rate' <= 80 should return 'true'`, () => {
+    expect(isUpperCase(rating, 80)).toBeTruthy();
   });
 });
 
