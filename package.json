@@ -1,6 +1,6 @@
 {
   "name": "case-sensing",
-  "version": "0.0.0-development",
+  "version": "v1.1.0",
   "description": "A javascript library to set or check (with or without ratio) the letter case of a string.",
   "main": "src/index.js",
   "scripts": {
