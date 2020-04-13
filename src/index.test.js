@@ -1,4 +1,4 @@
-import { isLowerCase, isUpperCase, isSentenceCase } from "./index";
+import { isLowerCase, isUpperCase, isSentenceCase, isCapitalCase } from "./index";
 
 describe("isLowerCase(text, rate)", () => {
   const success = "i like climbing mountains";
@@ -78,5 +78,32 @@ describe("isSentenceCase(text, rate)", () => {
   });
   it(`given a string with the first letter in lowercase should return 'false'`, () => {
     expect(isSentenceCase(fail)).toBeFalsy();
+  });
+});
+
+describe("isCapitalCase(text, rate)", () => {
+  const success = "I Like Climbing Mountains";
+  const fail = "I Like Climbing mountains";
+  it(`given a non-string or an empty string should throw an error'`, () => {
+    expect(() => {
+      isCapitalCase(13);
+    }).toThrow();
+    expect(() => {
+      isCapitalCase("");
+    }).toThrow();
+  });
+  it(`given an invalid value for 'rate' outside the range 0 to 100 should throw an error`, () => {
+    expect(() => {
+      isCapitalCase(success, 110);
+    }).toThrow();
+    expect(() => {
+      isCapitalCase(success, -10);
+    }).toThrow();
+  });
+  it(`given a string with only first letter in uppercase and all others in lowercase for all words of sentence should return 'true'`, () => {
+    expect(isCapitalCase(success)).toBeTruthy();
+  });
+  it(`given a string with the first letter in lowercase in at least one word of the sentence should return 'false'`, () => {
+    expect(isCapitalCase(fail)).toBeFalsy();
   });
 });
